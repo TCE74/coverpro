@@ -30,7 +30,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 6px 24px rgba(0,0,0,.18);
 }
 
-.brand { display: inline-flex; flex-direction: column; line-height: 1; }
+.brand { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; }
 .brand-main {
   font-size: clamp(1.45rem, 2vw, 2rem);
   font-weight: 900;
@@ -87,7 +87,7 @@ a { color: inherit; text-decoration: none; }
   transform: rotate(0deg);
 }
 .hero-image img {
-  width: 84%;
+  width: 74%;
   max-width: 100%;
   display: block;
 }
@@ -286,6 +286,11 @@ footer {
   padding: 28px 7vw;
   background: white;
   border-top: 1px solid var(--line);
+}
+.footer-logo img {
+  display: block;
+  max-width: 160px;
+  height: auto;
 }
 
 @media (max-width: 900px) {
