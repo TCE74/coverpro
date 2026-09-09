@@ -38,6 +38,46 @@
       </div>
     </section>
 
+    <section id="gallery" class="section gallery-section">
+      <div class="gallery-layout">
+        <div>
+          <p class="eyebrow">Machine gallery</p>
+          <h2>See the CoverPro system in use.</h2>
+          <p>From the front view to the production workflow, these images show how the machine is used for fast, repeatable book covering.</p>
+        </div>
+        <div class="gallery-stage-wrap">
+          <div class="gallery-stage" aria-live="polite">
+            <img class="active" src="assets/00%20coverpro.jpg" alt="CoverPro machine in a book processing warehouse">
+            <img src="assets/01%20covering%20in%20the%20office.jpg" alt="CoverPro machine being used in an office environment">
+            <img src="assets/02%20cover%20pro.jpg" alt="CoverPro machine close-up showing the operating table">
+            <img src="assets/03%20coverpro.jpg" alt="CoverPro machine in a warehouse setting">
+            <img src="assets/04%20coverpro.jpg" alt="CoverPro machine with a covered book ready to use">
+          </div>
+          <div class="gallery-nav" aria-label="Gallery navigation">
+            <button type="button" class="gallery-prev" aria-label="Previous image">‹</button>
+            <button type="button" class="gallery-next" aria-label="Next image">›</button>
+          </div>
+        </div>
+        <div class="gallery-thumbs" aria-label="Gallery thumbnails">
+          <button class="gallery-thumb active" type="button" data-index="0" aria-label="View first gallery image">
+            <img src="assets/00%20coverpro.jpg" alt="Thumbnail of the CoverPro machine">
+          </button>
+          <button class="gallery-thumb" type="button" data-index="1" aria-label="View second gallery image">
+            <img src="assets/01%20covering%20in%20the%20office.jpg" alt="Thumbnail of CoverPro in an office environment">
+          </button>
+          <button class="gallery-thumb" type="button" data-index="2" aria-label="View third gallery image">
+            <img src="assets/02%20cover%20pro.jpg" alt="Thumbnail showing close-up view of the CoverPro machine">
+          </button>
+          <button class="gallery-thumb" type="button" data-index="3" aria-label="View fourth gallery image">
+            <img src="assets/03%20coverpro.jpg" alt="Thumbnail of the CoverPro machine in a warehouse setting">
+          </button>
+          <button class="gallery-thumb" type="button" data-index="4" aria-label="View fifth gallery image">
+            <img src="assets/04%20coverpro.jpg" alt="Thumbnail of the CoverPro machine with a covered book">
+          </button>
+        </div>
+      </div>
+    </section>
+
     <section id="overview" class="section split">
       <div>
         <p class="eyebrow">Built for production</p>
@@ -49,7 +89,7 @@
       <div class="feature-grid">
         <article>
           <h3>Fast & efficient</h3>
-          <p>Reduce repetitive manual handling and keep batches moving.</p>
+          <p>Reduce repetitive manual handling and keep batches moving.  A single user can process multiple books per minute with perfect results every time.</p>
         </article>
         <article>
           <h3>Consistent finish</h3>
@@ -126,9 +166,9 @@
 
     <section id="specs" class="section specs-section">
       <div class="specs-copy">
-        <p class="eyebrow">Specifications</p>
+        <p class="eyebrow"></p>
         <h2>Technical Specifications</h2>
-        <p>Technical details covering power requirements, current ratings and the machine's physical size and weight.</p>
+        <p>If you would like to know any other technical details, please contact us.</p>
       </div>
       <div class="specs-details">
         <div class="spec-table-wrap">
@@ -194,7 +234,7 @@
         <p class="eyebrow">Want to know more?</p>
         <h2>Let's Discuss Your Requirements</h2>
         <p>CoverPro is an investment in productivity, and every operation is different. Tell us about your workflow, the types of books you process and your production volume, and we'll help determine whether CoverPro is the right fit.</p>
-        <p>Whether you're looking for pricing, technical information or a live video demonstration, we're happy to answer your questions and show you the machine in action.</p>
+        <p>Whether you're looking for pricing, additional technical information or a live video demonstration, we're happy to answer your questions and show you the machine in action.</p>
       </div>
       <form action="mailto:info@bookcoverco.com.au" method="post" enctype="text/plain">
         <label>Name <input name="name" required></label>
@@ -216,5 +256,34 @@
       <img src="assets/BCCLOGO.jpg" alt="Book Cover Co logo">
     </a>
   </footer>
+
+  <script>
+    const stageImages = document.querySelectorAll('.gallery-stage img');
+    const thumbButtons = document.querySelectorAll('.gallery-thumb');
+    const prevButton = document.querySelector('.gallery-prev');
+    const nextButton = document.querySelector('.gallery-next');
+    let activeIndex = 0;
+
+    function showImage(index) {
+      activeIndex = (index + stageImages.length) % stageImages.length;
+
+      thumbButtons.forEach((thumb, thumbIndex) => {
+        thumb.classList.toggle('active', thumbIndex === activeIndex);
+      });
+
+      stageImages.forEach((image, imageIndex) => {
+        image.classList.toggle('active', imageIndex === activeIndex);
+      });
+    }
+
+    thumbButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        showImage(Number(button.dataset.index));
+      });
+    });
+
+    prevButton.addEventListener('click', () => showImage(activeIndex - 1));
+    nextButton.addEventListener('click', () => showImage(activeIndex + 1));
+  </script>
 </body>
 </html>
